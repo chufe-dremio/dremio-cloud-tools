@@ -1,0 +1,12 @@
+{
+    "oAuthConfig": {
+        "clientId": "{{ required "Azure Active Directory (AAD) client id is required" $.Values.azureActiveDirectory.clientId }}",
+        "clientSecret": "{{ required "Azure Active Directory (AAD) client secret is required" $.Values.azureActiveDirectory.clientSecret }}",
+        "redirectUrl": "{{ required "Azure Active Directory (AAD) credirect url is required" $.Values.azureActiveDirectory.redirectUrl }}",
+        "authorityUrl": "{{ required "Azure Active Directory (AAD) authority url is required" $.Values.azureActiveDirectory.authorityUrl }}",
+        "scope": "openid profile offline_access",
+        "jwtClaims": {
+            "userName": "preferred_username"
+        }
+    }
+}

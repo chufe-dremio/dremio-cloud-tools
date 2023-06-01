@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dremio-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  tls:
+  - hosts:
+    - {{ required "Ingress Hostname is required" $.Values.ingress.hostname }}
+    secretName: {{ required "Ingress Hostname is required" $.Values.ingress.hostname }}
+  rules:
+  - host: {{ required "Ingress Hostname is required" $.Values.ingress.hostname }}
+    http:
+      paths:
+      - path: /(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: dremio-client
+            port:
+              number: 9047

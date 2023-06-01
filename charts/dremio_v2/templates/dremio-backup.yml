@@ -1,0 +1,66 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  # "namespace" omitted since ClusterRoles are not namespaced
+  name: dremio-jobs-role
+rules:
+- apiGroups: [""]
+  #
+  # at the HTTP level, the name of the resource for accessing Secret
+  # objects is "secrets"
+  resources: ["pods", "pods/exec"]
+# create is required.
+  verbs: ["get", "list", "watch", "create"]
+- apiGroups: [""]
+  resources: ["configmaps"]
+  resourceNames: ["kube-root-ca.crt"]
+  verbs: ["get"]
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dremio-jobs
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
+# This role binding allows "jane" to read pods in the "default" namespace.
+# You need to already have a Role named "pod-reader" in that namespace.
+kind: RoleBinding
+metadata:
+  name: dremio-jobs
+subjects:
+# You can specify more than one "subject"
+- kind: ServiceAccount
+  name: dremio-jobs
+roleRef:
+  # "roleRef" specifies the binding to a Role / ClusterRole
+  kind: Role #this must be Role or ClusterRole
+  name: dremio-jobs-role
+  apiGroup: rbac.authorization.k8s.io
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: dremio-backup-adls
+spec:
+  schedule: "0 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+            serviceAccountName: dremio-jobs
+            automountServiceAccountToken: true
+            containers:
+            - name: job
+              image:  bitnami/kubectl:latest
+              imagePullPolicy: IfNotPresent
+              command:
+              - /bin/sh
+              - -c
+              - kubectl exec -i -t dremio-master-0 --container dremio-master-coordinator -- /opt/dremio/bin/dremio-admin backup -l -d dremioAzureStorage://:///dremio-backup
+            restartPolicy: OnFailure

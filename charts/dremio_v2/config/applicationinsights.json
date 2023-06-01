@@ -1,0 +1,355 @@
+{
+  "connectionString": "{{ required "Azure Application Insights ConnectionString is required" $.Values.applicationInsights.connectionString }}",
+  "jmxMetrics": [
+    {
+      "name": "Dremio Jobs Failed Last 15 minutes",
+      "objectName": "metrics:type=gauges,name=jobs.failed_15m",
+      "attribute": "Value"
+    },
+        {
+      "name": "Dremio Jobs Failed Last Day",
+      "objectName": "metrics:type=gauges,name=jobs.failed_1d",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Jobs Active Last 15 minutes",
+      "objectName": "metrics:type=gauges,name=jobs.active_15m",
+      "attribute": "Value"
+    },
+        {
+      "name": "Dremio Jobs Active Last Day",
+      "objectName": "metrics:type=gauges,name=jobs.active_1d",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Jobs Active Current",
+      "objectName": "metrics:type=gauges,name=jobs.active",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Direct Memory",
+      "objectName": "metrics:type=gauges,name=dremio.memory.direct_current",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Remaining Heap Allocations",
+      "objectName": "metrics:type=gauges,name=dremio.memory.remaining_heap_allocations",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio JVM Direct Memory",
+      "objectName": "metrics:type=gauges,name=dremio.memory.jvm_direct_current",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio JVM uptime (millis)",
+      "objectName": "java.lang:type=Runtime",
+      "attribute": "Uptime"
+    },
+    {
+      "name": "Dremio Memory Heap Committed",
+      "objectName": "metrics:type=gauges,name=memory.heap.committed",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Heap Init",
+      "objectName": "metrics:type=gauges,name=memory.heap.init",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Heap Max",
+      "objectName": "metrics:type=gauges,name=memory.heap.max",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Heap Usage",
+      "objectName": "metrics:type=gauges,name=memory.heap.usage",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Heap Used",
+      "objectName": "metrics:type=gauges,name=memory.heap.used",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Non-Heap Committed",
+      "objectName": "metrics:type=gauges,name=memory.non-heap.committed",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Non-Heap Init",
+      "objectName": "metrics:type=gauges,name=memory.non-heap.init",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Non-Heap Max",
+      "objectName": "metrics:type=gauges,name=memory.non-heap.max",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Non-Heap Usage",
+      "objectName": "metrics:type=gauges,name=memory.non-heap.usage",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Non-Heap Used",
+      "objectName": "metrics:type=gauges,name=memory.non-heap.used",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Total Committed",
+      "objectName": "metrics:type=gauges,name=memory.total.committed",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Total Init",
+      "objectName": "metrics:type=gauges,name=memory.total.init",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Total Max",
+      "objectName": "metrics:type=gauges,name=memory.total.max",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Memory Total Used",
+      "objectName": "metrics:type=gauges,name=memory.total.used",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Metadata refreshes failed last 15 min",
+      "objectName": "metrics:type=gauges,name=metadata_refresh.failed_15m",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Metadata refreshes succeeded last 15 min",
+      "objectName": "metrics:type=gauges,name=metadata_refresh.success_15m",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Reflections Active",
+      "objectName": "metrics:type=gauges,name=reflections.active",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Reflections Failed",
+      "objectName": "metrics:type=gauges,name=reflections.failed",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Reflections Refreshing",
+      "objectName": "metrics:type=gauges,name=reflections.refreshing",
+      "attribute": "Value"
+    },
+    {
+      "name": "Dremio Execution Planning Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Execution Planning Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Execution Planning Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Execution Planning Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Execution Planning Time - Count",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Execution Planning Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Execution Planning Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.executionPlanningTime",
+      "attribute": "99thPercentile"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - Count",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Metadata Retrieval Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.metadataRetrievalTime",
+      "attribute": "99thPercentile"
+    },
+    {
+      "name": "Dremio Pending Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Pending Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Pending Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Pending Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Pending Time - Count",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Pending Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Pending Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.pendingTime",
+      "attribute": "99thPercentile"
+    },
+    {
+      "name": "Dremio Planning Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Planning Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Planning Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Planning Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Planning Time - Count",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Planning Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Planning Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.planningTime",
+      "attribute": "99thPercentile"
+    },
+    {
+      "name": "Dremio Queued Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Queued Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Queued Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Queued Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Queued Time - Count",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Queued Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Queued Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.queuedTime",
+      "attribute": "99thPercentile"
+    },
+    {
+      "name": "Dremio Running Time - 1 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "OneMinuteRate"
+    },
+    {
+      "name": "Dremio Running Time - 5 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "FiveMinuteRate"
+    },
+    {
+      "name": "Dremio Running Time - 15 Minute Rate",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "FifteenMinuteRate"
+    },
+    {
+      "name": "Dremio Running Time - Mean Rate",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "MeanRate"
+    },
+    {
+      "name": "Dremio Running Time - Count",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "Count"
+    },
+    {
+      "name": "Dremio Running Time - Mean",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "Mean"
+    },
+    {
+      "name": "Dremio Running Time - 99th Percentile",
+      "objectName": "metrics:type=timers,name=Query.runningTime",
+      "attribute": "99thPercentile"
+    }
+  ]
+}
