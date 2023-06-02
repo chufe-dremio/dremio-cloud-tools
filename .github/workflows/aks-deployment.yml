@@ -56,7 +56,10 @@ jobs:
       - uses: actions/checkout@v3
 
       # Logs in with your Azure credentials
-      # Logs in with your Azure credentials
+      - name: Debug commands
+        run: |
+             pwd
+             az --version
       - name: Azure login
         uses: azure/login@v1.4.6
         with:
