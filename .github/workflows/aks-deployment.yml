@@ -44,7 +44,7 @@ env:
   CHART_OVERRIDE_PATH: "/charts/dremio_v2/values-aks.yml"
 
 jobs:
-  buildImage:
+  checkout:
     permissions:
       contents: read
       id-token: write
@@ -60,6 +60,7 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          environment: mycluster
 
   deploy:
     permissions:
