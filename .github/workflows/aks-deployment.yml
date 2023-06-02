@@ -60,8 +60,8 @@ jobs:
         run: |
              pwd
              az --version
-             echo "MYTESTSEC $MYTESTSEC"
-             echo "MYTESTENV $MYTESTENV"
+             echo "MYTESTSEC ${{ secrets.MYTESTSEC }}"
+             echo "MYTESTENV ${{ env.$MYTESTENV }}"
 
 #          az ad sp create-for-rbac --name "myApp" --role contributor \
 #                             --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
