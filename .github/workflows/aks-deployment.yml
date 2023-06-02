@@ -69,7 +69,7 @@ jobs:
       - name: Azure login
         uses: azure/login@v1.4.6
         with:
-          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+          creds: "${{ secrets.AZURE_CREDENTIALS }}"
           environment: mycluster
 
       # Use kubelogin to configure your kubeconfig for Azure auth
