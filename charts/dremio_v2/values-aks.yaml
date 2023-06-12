@@ -549,3 +549,7 @@ service:
 # https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
 # imagePullSecrets:
 #  - secretname
+
+imagePullSecrets:
+  - carsten-docker-secret
+  - carsten-aks-gcr
