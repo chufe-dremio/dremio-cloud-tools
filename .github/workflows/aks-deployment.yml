@@ -72,8 +72,8 @@ jobs:
       - name: Get K8s context
         uses: azure/aks-set-context@v3
         with:
-          resource-group: ${{ env.RESOURCE_GROUP }}
-          cluster-name: ${{ env.CLUSTER_NAME }}
+          resource-group: ${{ vars.RESOURCE_GROUP }}
+          cluster-name: ${{ vars.CLUSTER_NAME }}
           admin: 'true'
           use-kubelogin: 'true'
 
@@ -90,7 +90,7 @@ jobs:
             azureActiveDirectory.clientSecret: ${{ secrets.AAD_CLIENT_SECRET }}
             azureActiveDirectory.redirectUrl: ${{ secrets.AAD_REDIRECT_URL }}
             azureActiveDirectory.authorityUrl: ${{ secrets.AAD_AUTHORITY_URL }}
-            letsencrypt.issuerEmail: ${{ env.ISSUER_EMAIL }}
+            letsencrypt.issuerEmail: ${{ vars.ISSUER_EMAIL }}
             ingress.hostname: ${{ secrets.INGRESS_HOSTNAME }}
             coordinator.web.secret: ${{ secrets.INGRESS_HOSTNAME }}
             coordinator.client.secret: ${{ secrets.INGRESS_HOSTNAME }}
