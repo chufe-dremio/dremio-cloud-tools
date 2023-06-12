@@ -55,21 +55,12 @@ jobs:
       # Checks out the repository this file is in
       - uses: actions/checkout@v3
 
-      # Logs in with your Azure credentials
-      - name: Debug commands
-        run: |
-             pwd
-             az --version
-             echo "MYTESTSEC ${{ secrets.MYTESTSEC }}"
-             echo "MYTESTENV ${{ env.MYTESTENV }}"
-
-#          az ad sp create-for-rbac --name "myApp" --role contributor \
-#                             --scopes /subscriptions/{subscription-id}/resourceGroups/{resource-group} \
-#                             --sdk-auth
       - name: Azure login
         uses: azure/login@v1.4.6
         with:
-          creds: "${{ secrets.AZURE_CREDENTIALS }}"
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           environment: mycluster
 
       # Use kubelogin to configure your kubeconfig for Azure auth
