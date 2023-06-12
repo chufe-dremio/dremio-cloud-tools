@@ -92,9 +92,9 @@ jobs:
             azureActiveDirectory.authorityUrl:${{ secrets.AAD_AUTHORITY_URL }}
             letsencrypt.issuerEmail:${{ vars.ISSUER_EMAIL }}
             ingress.hostname:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.web.secret:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.client.secret:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.flight.secret:${{ secrets.INGRESS_HOSTNAME }}
+            coordinator.web.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
+            coordinator.client.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
+            coordinator.flight.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
             distStorage.azureStorage.accountName:${{ secrets.DIST_STORAGE_ACCOUNT_NAME }}
             distStorage.azureStorage.filesystem:${{ secrets.DIST_STORAGE_FILESYSTEM }}
             distStorage.azureStorage.credentials.accessKey:${{ secrets.DIST_STORAGE_ACCESS_KEY }}
