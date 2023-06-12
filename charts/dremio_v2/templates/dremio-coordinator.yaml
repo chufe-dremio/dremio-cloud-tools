@@ -87,8 +87,8 @@ spec:
             scheme: HTTPS
             {{- end }}
             port: 9047
-          failureThreshold: 10
-          periodSeconds: 5
+          failureThreshold: 50
+          periodSeconds: 10
         readinessProbe:
           httpGet:
             path: /
@@ -96,8 +96,8 @@ spec:
             scheme: HTTPS
             {{- end }}
             port: 9047
-          failureThreshold: 2
-          periodSeconds: 5
+          failureThreshold: 50
+          periodSeconds: 10
       initContainers:
       {{- include "dremio.coordinator.extraInitContainers" $ | nindent 6 }}
       - name: wait-for-dremio-master
