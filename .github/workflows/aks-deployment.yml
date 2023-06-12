@@ -41,7 +41,7 @@ on:
 
 env:
   CHART_PATH: "./charts/dremio_v2"
-  CHART_OVERRIDE_PATH: "./charts/dremio_v2/values-aks.yml"
+  CHART_OVERRIDE_PATH: "./charts/dremio_v2/values-aks.yaml"
 
 jobs:
    deploy:
