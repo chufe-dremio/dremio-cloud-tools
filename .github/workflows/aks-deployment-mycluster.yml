@@ -1,0 +1,14 @@
+name: Deploy Pipeline
+
+on:
+  push:
+    branches: ["master"]
+  workflow_dispatch:
+
+jobs:
+  deploy_mycluster:
+    name: Deploy to Dev
+    uses: chufe-dremio/dremio-cloud-tools/.github/workflows/aks-deployment.yml@master
+    with:
+      environment: mycluster
+

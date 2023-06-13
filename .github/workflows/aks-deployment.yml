@@ -32,12 +32,15 @@
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 # For more options with the actions used below please refer to https://github.com/Azure/login
 
-name: Build and deploy an app to AKS with Helm
+name: Build and deploy an app to AKS with Helm Template
 
 on:
-  push:
-    branches: ["master"]
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        description: environment to deploy to
+        required: true
 
 env:
   CHART_PATH: "./charts/dremio_v2"
@@ -45,12 +48,13 @@ env:
 
 jobs:
    deploy:
+    name: Deploy to ${{ inputs.environment }}
     permissions:
       actions: read
       contents: read
       id-token: write
     runs-on: ubuntu-latest
-    environment: mycluster
+    environment: ${{ inputs.environment }}
     steps:
       # Checks out the repository this file is in
       - uses: actions/checkout@v3
