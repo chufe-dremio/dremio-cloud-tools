@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <property>
+    <name>fs.azure.account.auth.type</name>
+    <value>OAuth</value>
+  </property>
+  <property>
+    <name>fs.azure.account.oauth.provider.type</name>
+    <value>org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider</value>
+  </property>
+  <property>
+     <name>fs.azure.account.oauth2.client.id</name>
+     <value>{{ $.Values.hive.oauth2.clientId }}</value>
+  </property>
+  <property>
+     <name>fs.azure.account.oauth2.client.secret</name>
+     <value>{{ $.Values.hive.oauth2.clientSecret }}</value>
+  </property>
+  <property>
+     <name>fs.azure.account.oauth2.client.endpoint</name>
+     <value>{{ $.Values.hive.oauth2.clientEndpoint }}</value>
+  </property>
+  <property>
+     <name>fs.abfss.impl</name>
+     <value>org.apache.hadoop.fs.azurebfs.SecureAzureBlobFileSystem</value>
+  </property>
+  <property>
+     <name>fs.AbstractFileSystem.abfss.impl</name>
+     <value>org.apache.hadoop.fs.azurebfs.Abfss</value>
+  </property>
+</configuration>

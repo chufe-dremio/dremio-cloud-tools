@@ -98,6 +98,9 @@ jobs:
             distStorage.azureStorage.accountName:${{ secrets.DIST_STORAGE_ACCOUNT_NAME }}
             distStorage.azureStorage.filesystem:${{ secrets.DIST_STORAGE_FILESYSTEM }}
             distStorage.azureStorage.credentials.accessKey:${{ secrets.DIST_STORAGE_ACCESS_KEY }}
+            hive.oauth2.clientId:${{ secrets.HIVE_OAUTH2_CLIENT_ID }}
+            hive.oauth2.clientSecret:${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}
+            hive.oauth2.clientEndpoint:${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}
           helm-version: "latest"
         id: bake
 

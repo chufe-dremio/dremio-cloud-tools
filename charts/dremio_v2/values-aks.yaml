@@ -31,6 +31,12 @@ letsencrypt:
 ingress:
   hostname: SET_VIA_CICD
 
+hive:
+  oauth2:
+    clientId: SET_VIA_CICD
+    clientSecret: SET_VIA_CICD
+    clientEndpoint: SET_VIA_CICD
+
 # Annotations, labels, node selectors, and tolerations
 #
 # annotations: Annotations are applied to the StatefulSets that are deployed.
