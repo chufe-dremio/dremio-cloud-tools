@@ -42,7 +42,6 @@ on:
 env:
   CHART_PATH: "./charts/dremio_v2"
   CHART_OVERRIDE_PATH: "./charts/dremio_v2/values-aks.yaml"
-  ENVIRONMENT: mycluster
 
 jobs:
   deploy:
@@ -51,7 +50,7 @@ jobs:
       contents: read
       id-token: write
     runs-on: ubuntu-latest
-    environment: ${{ env.ENVIRONMENT }}
+    environment: mycluster
     steps:
       # Checks out the repository this file is in
       - uses: actions/checkout@v3
