@@ -41,6 +41,31 @@ on:
         type: string
         description: environment to deploy to
         required: true
+    secrets:
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
+      APPLICATION_INSIGHTS_CONN_STRING:
+        required: true
+      AAD_CLIENT_ID:
+        required: true
+      AAD_CLIENT_SECRET:
+        required: true
+      AAD_REDIRECT_URL:
+        required: true
+      AAD_AUTHORITY_URL:
+        required: true
+      INGRESS_HOSTNAME:
+        required: true
+      DIST_STORAGE_ACCOUNT_NAME:
+        required: true
+      DIST_STORAGE_FILESYSTEM:
+        required: true
+      DIST_STORAGE_ACCESS_KEY:
+        required: true
 
 env:
   CHART_PATH: "./charts/dremio_v2"
