@@ -77,6 +77,12 @@ jobs:
           admin: 'true'
           use-kubelogin: 'true'
 
+      - uses: Azure/get-keyvault-secrets@v1
+        with:
+          keyvault: carstenvault
+          secrets: 'abc'
+        id: helmSecrets
+
       - name: Deploy Dremio
         run: |
           helm upgrade dremio --install -n default ${{ env.CHART_PATH }} -f ${{ env.CHART_OVERRIDE_PATH }} --wait \
@@ -95,7 +101,8 @@ jobs:
             --set distStorage.azureStorage.credentials.accessKey="${{ secrets.DIST_STORAGE_ACCESS_KEY }}" \
             --set hive.oauth2.clientId="${{ secrets.HIVE_OAUTH2_CLIENT_ID }}" \
             --set hive.oauth2.clientSecret="${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}" \
-            --set hive.oauth2.clientEndpoint="${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}"
+            --set hive.oauth2.clientEndpoint="${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}" \
+            --set abc="${{ helmSecrets.abc }}"
 
       # Runs Helm to create manifest files
 #      - name: Bake deployment
