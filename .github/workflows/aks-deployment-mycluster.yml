@@ -77,14 +77,14 @@ jobs:
           admin: 'true'
           use-kubelogin: 'true'
 
-      # Runs Helm to create manifest files
-      - name: Bake deployment
-        uses: azure/k8s-bake@v2
+      - name: Deploy Dremio
+        uses: deliverybot/helm@v1
         with:
-          renderEngine: "helm"
-          helmChart: ${{ env.CHART_PATH }}
-          overrideFiles: ${{ env.CHART_OVERRIDE_PATH }}
-          overrides: |
+          release: 'dremio-demo'
+          namespace: 'default'
+          chart: ${{ env.CHART_PATH }}
+          token: ${{ github.token }}
+          values: |
             applicationInsights.connectionString:${{ secrets.APPLICATION_INSIGHTS_CONN_STRING }}
             azureActiveDirectory.clientId:${{ secrets.AAD_CLIENT_ID }}
             azureActiveDirectory.clientSecret:${{ secrets.AAD_CLIENT_SECRET }}
@@ -101,12 +101,40 @@ jobs:
             hive.oauth2.clientId:${{ secrets.HIVE_OAUTH2_CLIENT_ID }}
             hive.oauth2.clientSecret:${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}
             hive.oauth2.clientEndpoint:${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}
-          helm-version: "latest"
-        id: bake
+          value-files: |
+            ${{ env.CHART_OVERRIDE_PATH }}
+          
 
-      # Deploys application based on manifest files from previous step
-      - name: Deploy application
-        uses: Azure/k8s-deploy@v4
-        with:
-          action: deploy
-          manifests: ${{ steps.bake.outputs.manifestsBundle }}
+      # Runs Helm to create manifest files
+#      - name: Bake deployment
+#        uses: azure/k8s-bake@v2
+#        with:
+#          renderEngine: "helm"
+#          helmChart: ${{ env.CHART_PATH }}
+#          overrideFiles: ${{ env.CHART_OVERRIDE_PATH }}
+#          overrides: |
+#            applicationInsights.connectionString:${{ secrets.APPLICATION_INSIGHTS_CONN_STRING }}
+#            azureActiveDirectory.clientId:${{ secrets.AAD_CLIENT_ID }}
+#            azureActiveDirectory.clientSecret:${{ secrets.AAD_CLIENT_SECRET }}
+#            azureActiveDirectory.redirectUrl:${{ secrets.AAD_REDIRECT_URL }}
+#            azureActiveDirectory.authorityUrl:${{ secrets.AAD_AUTHORITY_URL }}
+#            letsencrypt.issuerEmail:${{ vars.ISSUER_EMAIL }}
+#            ingress.hostname:${{ secrets.INGRESS_HOSTNAME }}
+#            coordinator.web.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
+#            coordinator.client.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
+#            coordinator.flight.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
+#            distStorage.azureStorage.accountName:${{ secrets.DIST_STORAGE_ACCOUNT_NAME }}
+#            distStorage.azureStorage.filesystem:${{ secrets.DIST_STORAGE_FILESYSTEM }}
+#            distStorage.azureStorage.credentials.accessKey:${{ secrets.DIST_STORAGE_ACCESS_KEY }}
+#            hive.oauth2.clientId:${{ secrets.HIVE_OAUTH2_CLIENT_ID }}
+#            hive.oauth2.clientSecret:${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}
+#            hive.oauth2.clientEndpoint:${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}
+#          helm-version: "latest"
+#        id: bake
+#
+#      # Deploys application based on manifest files from previous step
+#      - name: Deploy application
+#        uses: Azure/k8s-deploy@v4
+#        with:
+#          action: deploy
+#          manifests: ${{ steps.bake.outputs.manifestsBundle }}
