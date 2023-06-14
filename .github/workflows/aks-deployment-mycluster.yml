@@ -77,32 +77,8 @@ jobs:
           admin: 'true'
           use-kubelogin: 'true'
 
-      - name: Deploy Dremio
-        uses: deliverybot/helm@v1
-        with:
-          release: 'dremio-demo'
-          namespace: 'default'
-          chart: ${{ env.CHART_PATH }}
-          token: ${{ github.token }}
-          values: |
-            applicationInsights.connectionString:${{ secrets.APPLICATION_INSIGHTS_CONN_STRING }}
-            azureActiveDirectory.clientId:${{ secrets.AAD_CLIENT_ID }}
-            azureActiveDirectory.clientSecret:${{ secrets.AAD_CLIENT_SECRET }}
-            azureActiveDirectory.redirectUrl:${{ secrets.AAD_REDIRECT_URL }}
-            azureActiveDirectory.authorityUrl:${{ secrets.AAD_AUTHORITY_URL }}
-            letsencrypt.issuerEmail:${{ vars.ISSUER_EMAIL }}
-            ingress.hostname:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.web.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.client.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
-            coordinator.flight.tls.secret:${{ secrets.INGRESS_HOSTNAME }}
-            distStorage.azureStorage.accountName:${{ secrets.DIST_STORAGE_ACCOUNT_NAME }}
-            distStorage.azureStorage.filesystem:${{ secrets.DIST_STORAGE_FILESYSTEM }}
-            distStorage.azureStorage.credentials.accessKey:${{ secrets.DIST_STORAGE_ACCESS_KEY }}
-            hive.oauth2.clientId:${{ secrets.HIVE_OAUTH2_CLIENT_ID }}
-            hive.oauth2.clientSecret:${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}
-            hive.oauth2.clientEndpoint:${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}
-          value-files: |
-            ${{ env.CHART_OVERRIDE_PATH }}
+      - name: List Helm
+        run: helm list
           
 
       # Runs Helm to create manifest files
