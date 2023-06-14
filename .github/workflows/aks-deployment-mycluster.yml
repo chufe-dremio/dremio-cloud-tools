@@ -79,7 +79,7 @@ jobs:
 
       - name: Deploy Dremio
         run: |
-          helm upgrade dremio --install -n default ${{ env.CHART_OVERRIDE_PATH }} -f ${{ env.CHART_OVERRIDE_PATH }} --wait \
+          helm upgrade dremio --install -n default ${{ env.CHART_PATH }} -f ${{ env.CHART_OVERRIDE_PATH }} --wait \
             --set applicationInsights.connectionString="${{ secrets.APPLICATION_INSIGHTS_CONN_STRING }}" \
             --set azureActiveDirectory.clientId="${{ secrets.AAD_CLIENT_ID }}" \
             --set azureActiveDirectory.clientSecret="${{ secrets.AAD_CLIENT_SECRET }}" \
