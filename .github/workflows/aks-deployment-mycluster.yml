@@ -77,9 +77,25 @@ jobs:
           admin: 'true'
           use-kubelogin: 'true'
 
-      - name: List Helm
-        run: helm list
-          
+      - name: Deploy Dremio
+        run: |
+          helm upgrade dremio --install -n default ${{ env.CHART_OVERRIDE_PATH }} -f ${{ env.CHART_OVERRIDE_PATH }} --wait \
+            --set applicationInsights.connectionString="${{ secrets.APPLICATION_INSIGHTS_CONN_STRING }}" \
+            --set azureActiveDirectory.clientId="${{ secrets.AAD_CLIENT_ID }}" \
+            --set azureActiveDirectory.clientSecret="${{ secrets.AAD_CLIENT_SECRET }}" \
+            --set azureActiveDirectory.redirectUrl="${{ secrets.AAD_REDIRECT_URL }}" \
+            --set azureActiveDirectory.authorityUrl="${{ secrets.AAD_AUTHORITY_URL }}" \
+            --set letsencrypt.issuerEmail="${{ vars.ISSUER_EMAIL }}" \
+            --set ingress.hostname="${{ secrets.INGRESS_HOSTNAME }}" \
+            --set coordinator.web.tls.secret="${{ secrets.INGRESS_HOSTNAME }}" \
+            --set coordinator.client.tls.secret="${{ secrets.INGRESS_HOSTNAME }}" \
+            --set coordinator.flight.tls.secret="${{ secrets.INGRESS_HOSTNAME }}" \
+            --set distStorage.azureStorage.accountName="${{ secrets.DIST_STORAGE_ACCOUNT_NAME }}" \
+            --set distStorage.azureStorage.filesystem="${{ secrets.DIST_STORAGE_FILESYSTEM }}" \
+            --set distStorage.azureStorage.credentials.accessKey="${{ secrets.DIST_STORAGE_ACCESS_KEY }}" \
+            --set hive.oauth2.clientId="${{ secrets.HIVE_OAUTH2_CLIENT_ID }}" \
+            --set hive.oauth2.clientSecret="${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}" \
+            --set hive.oauth2.clientEndpoint="${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}"
 
       # Runs Helm to create manifest files
 #      - name: Bake deployment
