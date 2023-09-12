@@ -134,7 +134,7 @@ coordinator:
 
   # Web UI
   web:
-    port: 9047
+    port: 443
     tls:
       # To enable TLS for the web UI, set the enabled flag to true and provide
       # the appropriate Kubernetes TLS secret.
@@ -523,7 +523,7 @@ extraVolumeMounts:
 # The dremio-client service exposes the service for access outside of the Kubernetes cluster.
 # Load balancer managed via ingress
 service:
-  type: ClusterIP
+  type: LoadBalancer
 
   # These values, when defined and not empty, override the provided shared annotations and labels.
   # Uncomment only if you are trying to override the chart's shared values.
