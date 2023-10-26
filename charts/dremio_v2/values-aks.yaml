@@ -176,8 +176,8 @@ executor:
   # CPU & Memory
   # Memory allocated to each executor, expressed in MB.
   # CPU allocated to each executor, expressed in CPU cores.
-  cpu: 3
-  memory: 12000
+  cpu: 2
+  memory: 10000
 
   # Engines
   # Engine names be 47 characters or less and be lowercase alphanumber characters or '-'.
