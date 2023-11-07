@@ -320,7 +320,7 @@ zookeeper:
   # CPU & Memory
   # Memory allocated to each zookeeper, expressed in MB.
   # CPU allocated to each zookeeper, expressed in CPU cores.
-  cpu: 100m
+  cpu: 1m
   memory: 1024
   count: 1
 
