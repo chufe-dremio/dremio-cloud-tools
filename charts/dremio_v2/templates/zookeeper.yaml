@@ -75,6 +75,7 @@ spec:
               topologyKey: "kubernetes.io/hostname"
       {{- include "dremio.zookeeper.nodeSelector" $ | nindent 6 }}
       {{- include "dremio.zookeeper.tolerations" $ | nindent 6 }}
+      shareProcessNamespace: true
       containers:
       - name: kubernetes-zookeeper
         imagePullPolicy: Always
