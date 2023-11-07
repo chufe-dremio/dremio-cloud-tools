@@ -315,12 +315,12 @@ executor:
 zookeeper:
   # The Zookeeper image used in the cluster.
   image: zookeeper
-  imageTag: 3.8.1
+  imageTag: 3.8.2
 
   # CPU & Memory
   # Memory allocated to each zookeeper, expressed in MB.
   # CPU allocated to each zookeeper, expressed in CPU cores.
-  cpu: 1
+  cpu: 100m
   memory: 1024
   count: 1
 
