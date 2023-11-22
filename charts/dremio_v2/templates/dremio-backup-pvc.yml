@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dremio-backup-volume
+spec:
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 512Gi
+  accessModes:
+    - ReadWriteOnce
