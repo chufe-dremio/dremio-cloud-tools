@@ -96,7 +96,7 @@ jobs:
             --set hive.oauth2.clientId="${{ secrets.HIVE_OAUTH2_CLIENT_ID }}" \
             --set hive.oauth2.clientSecret="${{ secrets.HIVE_OAUTH2_CLIENT_SECRET }}" \
             --set hive.oauth2.clientEndpoint="${{ secrets.HIVE_OAUTH2_CLIENT_ENDPOINT }}" \
-            --set DremioAdmin=true
+            --set DremioAdmin=false
 
       # Runs Helm to create manifest files
 #      - name: Bake deployment
