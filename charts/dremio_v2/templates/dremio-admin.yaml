@@ -13,6 +13,9 @@ metadata:
   {{- include "dremio.admin.podLabels" $ | nindent 2}}
 spec:
   {{- include "dremio.admin.serviceAccount" $ | nindent 2 }}
+  securityContext:
+    runAsUser: 999
+    fsGroup: 999
   containers:
   - name: dremio-admin
     image: {{ $.Values.image }}:{{ $.Values.imageTag }}
