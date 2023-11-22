@@ -69,7 +69,7 @@ coordinator:
   # Coordinator data volume size (applies to the master coordinator only).
   # In most managed Kubernetes environments (AKS, GKE, etc.), the size of the disk has a direct impact on
   # the provisioned and maximum performance of the disk.
-  volumeSize: 256Gi
+  volumeSize: 128Gi
 
   # Kubernetes Service Account
   # Uncomment below to use a custom Kubernetes service account for the coordinator.
@@ -186,7 +186,7 @@ executor:
   count: 2
 
   # Executor volume size.
-  volumeSize: 256Gi
+  volumeSize: 128Gi
 
   # Kubernetes Service Account
   # Uncomment below to use a custom Kubernetes service account for executors.
@@ -239,7 +239,7 @@ executor:
     #   size: 100Gi
     #   storageClass: "local-nvme"
     volumes:
-    - size: 256Gi
+    - size: 128Gi
 
   # These values, when defined and not empty, override the provided shared annotations, labels, node selectors, or tolerations.
   # Uncomment only if you are trying to override the chart's shared values.
@@ -324,7 +324,7 @@ zookeeper:
   memory: 1024
   count: 1
 
-  volumeSize: 16Gi
+  volumeSize: 8Gi
 
   # Kubernetes Service Account
   # Uncomment below to use a custom Kubernetes service account for Zookeeper.
