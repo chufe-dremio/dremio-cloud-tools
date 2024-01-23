@@ -85,8 +85,8 @@ coordinator:
     -Xloggc:/opt/dremio/data/log/gc-%t.log -XX:+PrintGCTimeStamps
     -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
     -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
-    -Dservices.coordinator.web.auth.type=azuread
-    -Dservices.coordinator.web.auth.config=azuread.json
+#    -Dservices.coordinator.web.auth.type=azuread
+#    -Dservices.coordinator.web.auth.config=azuread.json
 
 # JMX example configuration
 #    -Djava.rmi.server.hostname=127.0.0.1
