@@ -14,7 +14,7 @@
 # automatically during redeployments and may negatively impact
 # the cluster.
 image: dremio/dremio-ee
-imageTag: 24.2.4
+imageTag: 24.3.1
 
 applicationInsights:
   connectionString: SET_VIA_CICD
