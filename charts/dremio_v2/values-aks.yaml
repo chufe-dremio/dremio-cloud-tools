@@ -183,7 +183,7 @@ executor:
   # Engine names be 47 characters or less and be lowercase alphanumber characters or '-'.
   # Note: The number of executor pods will be the length of the array below * count.
   engines: ["default"]
-  count: 2
+  count: 0
 
   # Executor volume size.
   volumeSize: 10Gi
