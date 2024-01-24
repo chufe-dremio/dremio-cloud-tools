@@ -122,11 +122,11 @@ spec:
           name: dremio-hive3-config
       - name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
         hostPath:
-          path: /mnt/data
+          path: {{ $.Values.executor.localDiskPath }}/data
           type: DirectoryOrCreate
       - name: executor-cloud-cache
         hostPath:
-          path: /mnt/c3
+          path: {{ $.Values.executor.localDiskPath }}/c3
           type: DirectoryOrCreate
       {{- include "dremio.executor.extraVolumes" (list $ $engineName) | nindent 6 }}
       {{- include "dremio.imagePullSecrets" $ | nindent 6 }}
