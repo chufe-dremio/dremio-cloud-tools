@@ -220,7 +220,7 @@ executor:
 
   # Uncomment this value to use a different storage class for executors.
   storageClass: "managed-premium" # local-disk
-mount path   localDiskPath: /mnt
+  localDiskPath: /mnt
 
   # Dremio C3
   # Designed for use with NVMe storage devices, performance may be impacted when using
