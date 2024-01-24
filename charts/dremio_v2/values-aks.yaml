@@ -225,7 +225,7 @@ executor:
   # Designed for use with NVMe storage devices, performance may be impacted when using
   # persistent volume storage that resides far from the physical node.
   cloudCache:
-    enabled: false
+    enabled: true
 
     # Uncomment this value to use a different storage class for C3.
     #storageClass:
