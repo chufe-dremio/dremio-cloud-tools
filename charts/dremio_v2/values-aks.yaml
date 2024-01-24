@@ -186,7 +186,7 @@ executor:
   count: 2
 
   # Executor volume size.
-  volumeSize: 128Gi
+  volumeSize: 10Gi
 
   # Kubernetes Service Account
   # Uncomment below to use a custom Kubernetes service account for executors.
@@ -219,7 +219,7 @@ executor:
   #extraVolumeMounts: []
 
   # Uncomment this value to use a different storage class for executors.
-  storageClass: managed-premium
+  storageClass: local-disk
 
   # Dremio C3
   # Designed for use with NVMe storage devices, performance may be impacted when using
@@ -239,7 +239,7 @@ executor:
     #   size: 100Gi
     #   storageClass: "local-nvme"
     volumes:
-    - size: 128Gi
+    - size: 10Gi
 
   # These values, when defined and not empty, override the provided shared annotations, labels, node selectors, or tolerations.
   # Uncomment only if you are trying to override the chart's shared values.

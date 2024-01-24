@@ -113,6 +113,8 @@ spec:
   volumeClaimTemplates:
   - metadata:
       name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
+      annotations:
+        volume.beta.kubernetes.io/storage-class: local-disk
     spec:
       accessModes: ["ReadWriteOnce"]
       {{- include "dremio.executor.storageClass" (list $ $engineName) | nindent 6 }}
