@@ -96,6 +96,16 @@ spec:
           mountPath: /opt/dremio/data
         command: ["chown"]
         args: ["dremio:dremio", "/opt/dremio/data"]
+      - name: chown-c3-directory
+        image: {{ $.Values.image }}:{{ $.Values.imageTag }}
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
+        - name: executor-cloud-cache
+          mountPath: /opt/dremio/cloudcache/c0
+        command: [ "chown" ]
+        args: [ "dremio:dremio", "/opt/dremio/cloudcache/c0" ]
 {{/*      {{- include "dremio.executor.cloudCache.initContainers" (list $ $engineName) | nindent 6 }}*/}}
       - name: wait-for-zookeeper
         image: busybox
