@@ -108,19 +108,21 @@ spec:
       - name: dremio-hive3-config
         configMap:
           name: dremio-hive3-config
+      - name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
+        hostPath:
+          path: /mnt/data
+          type: Directory
       {{- include "dremio.executor.extraVolumes" (list $ $engineName) | nindent 6 }}
       {{- include "dremio.imagePullSecrets" $ | nindent 6 }}
-  volumeClaimTemplates:
-  - metadata:
-      name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
-      annotations:
-        volume.beta.kubernetes.io/storage-class: local-disk
-    spec:
-      accessModes: ["ReadWriteOnce"]
-      {{- include "dremio.executor.storageClass" (list $ $engineName) | nindent 6 }}
-      resources:
-        requests:
-          storage: {{ template "dremio.executor.volumeSize" (list $ $engineName) }}
-  {{- include "dremio.executor.cloudCache.volumeClaimTemplate" (list $ $engineName) | nindent 2 }}
+{{/*  volumeClaimTemplates:*/}}
+{{/*  - metadata:*/}}
+{{/*      name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}*/}}
+{{/*    spec:*/}}
+{{/*      accessModes: ["ReadWriteOnce"]*/}}
+{{/*      {{- include "dremio.executor.storageClass" (list $ $engineName) | nindent 6 }}*/}}
+{{/*      resources:*/}}
+{{/*        requests:*/}}
+{{/*          storage: {{ template "dremio.executor.volumeSize" (list $ $engineName) }}*/}}
+{{/*  {{- include "dremio.executor.cloudCache.volumeClaimTemplate" (list $ $engineName) | nindent 2 }}*/}}
 {{ end -}}
 {{- end -}}
