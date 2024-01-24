@@ -13,6 +13,9 @@ spec:
   replicas: {{ template "dremio.executor.count" (list $ $engineName) }}
   podManagementPolicy: "Parallel"
   revisionHistoryLimit: 1
+  persistentVolumeClaimRetentionPolicy:
+    whenDeleted: Delete
+    whenScaled: Delete
   selector:
     matchLabels:
       app: {{ $executorName }}
