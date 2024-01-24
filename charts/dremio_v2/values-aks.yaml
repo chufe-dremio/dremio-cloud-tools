@@ -200,8 +200,8 @@ executor:
     -Dservices.web-admin.host=0.0.0.0
     -XX:+UseG1GC -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=25
     -Xloggc:/opt/dremio/data/log/gc-%t.log -XX:+PrintGCTimeStamps
-    -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
-    -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
+  #  -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
+  #  -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
 
   # Extra Init Containers
   # Uncomment the below lines to use a custom set of extra init containers for executors.
@@ -223,7 +223,7 @@ executor:
 
   # Dremio C3
   # Designed for use with NVMe storage devices, performance may be impacted when using
-  # persistent volume storage that resides far from the physical node.
+  # persistent volume storage that resides far frdisablom the physical node.
   cloudCache:
     enabled: true
 
