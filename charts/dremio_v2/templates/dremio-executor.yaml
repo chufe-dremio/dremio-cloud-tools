@@ -44,6 +44,8 @@ spec:
         volumeMounts:
         - name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
           mountPath: /opt/dremio/data
+        - name: executor-cloud-cache
+          mountPath: /opt/dremio/cloudcache/c0
         - name: dremio-config
           mountPath: /opt/dremio/conf
         - name: dremio-hive2-config
@@ -111,7 +113,11 @@ spec:
       - name: {{ template "dremio.executor.volumeClaimName" (list $ $engineName) }}
         hostPath:
           path: /mnt/data
-          type: Directory
+          type: DirectoryOrCreate
+      - name: executor-cloud-cache
+        hostPath:
+          path: /mnt/c3
+          type: DirectoryOrCreate
       {{- include "dremio.executor.extraVolumes" (list $ $engineName) | nindent 6 }}
       {{- include "dremio.imagePullSecrets" $ | nindent 6 }}
 {{/*  volumeClaimTemplates:*/}}
