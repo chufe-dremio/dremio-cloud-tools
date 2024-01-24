@@ -56,7 +56,7 @@ spec:
           mountPath: /opt/dremio/plugins/connectors/hive3.d
         - name: dremio-hive3-config
           mountPath: /opt/dremio/plugins/connectors/hive3-ee.d
-        {{- include "dremio.executor.cloudCache.volumeMounts" (list $ $engineName) | nindent 8 }}
+{{/*        {{- include "dremio.executor.cloudCache.volumeMounts" (list $ $engineName) | nindent 8 }}*/}}
         {{- include "dremio.executor.extraVolumeMounts" (list $ $engineName) | nindent 8 }}
         env:
         - name: DREMIO_MAX_HEAP_MEMORY_SIZE_MB
