@@ -171,6 +171,22 @@ coordinator:
       # kubectl create secret tls ${TLS_SECRET_NAME} --key ${KEY_FILE} --cert ${CERT_FILE}
       secret: SET_VIA_CICD
 
+  # Startup Probe
+  startupProbe:
+    # Max timeout for the probe is calculated as failureThreshold * periodSeconds
+    # failureThreshold: Maximum number of allowed failures
+    failureThreshold: 300
+    # periodSeconds: Polling frequency expressed in seconds
+    periodSeconds: 1
+
+  # Readiness Probe
+  readinessProbe:
+    # Max timeout for the probe is calculated as failureThreshold * periodSeconds
+    # failureThreshold: Maximum number of allowed failures
+    failureThreshold: 120
+    # periodSeconds: Polling frequency expressed in seconds
+    periodSeconds: 1
+
 # Dremio Executor
 executor:
   # CPU & Memory
@@ -256,6 +272,21 @@ executor:
     agentpool: executorpool
   #tolerations: []
 
+  # By default, the number of Engines is static. Enable the Node Lifecycle Service
+  # to enable dynamic scaling.
+  # nodeLifecycleService:
+  #   enabled: true
+  #   scalingMetrics:
+  #     default:
+  #       enabled: true
+  #   scalingBehavior:
+  #     scaleDown:
+  #       defaultPolicy:
+  #         enabled: true
+  #     scaleUp:
+  #       defaultPolicy:
+  #         enabled: true
+
   # Engine Overrides
   #
   # The settings above are overridable on a per-engine basis. These
@@ -283,6 +314,19 @@ executor:
   #     podLabels: {}
   #     nodeSelector: {}
   #     tolerations: []
+  #
+  #     nodeLifecycleService:
+  #       enabled: true
+  #       scalingMetrics:
+  #         default:
+  #           enabled: true
+  #       scalingBehavior:
+  #         scaleDown:
+  #           defaultPolicy:
+  #             enabled: true
+  #         scaleUp:
+  #           defaultPolicy:
+  #             enabled: true
   #
   #     serviceAccount: ""
   #
