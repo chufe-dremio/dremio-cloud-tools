@@ -18,6 +18,7 @@ spec:
       labels:
         app: dremio-coordinator
         role: dremio-cluster-pod
+        diagnostics-collector-role: dremio-coordinator
         {{- include "dremio.coordinator.podLabels" $ | nindent 8 }}
       annotations:
         dremio-configmap/checksum: {{ (tpl ($.Files.Glob "config/*").AsConfig $) | sha256sum }}
@@ -87,8 +88,8 @@ spec:
             scheme: HTTPS
             {{- end }}
             port: 9047
-          failureThreshold: 50
-          periodSeconds: 10
+          failureThreshold: {{ $.Values.coordinator.startupProbe.failureThreshold }}
+          periodSeconds: {{ $.Values.coordinator.startupProbe.periodSeconds }}
         readinessProbe:
           httpGet:
             path: /
@@ -96,8 +97,8 @@ spec:
             scheme: HTTPS
             {{- end }}
             port: 9047
-          failureThreshold: 50
-          periodSeconds: 10
+          failureThreshold: {{ $.Values.coordinator.readinessProbe.failureThreshold }}
+          periodSeconds: {{ $.Values.coordinator.readinessProbe.periodSeconds }}
       initContainers:
       {{- include "dremio.coordinator.extraInitContainers" $ | nindent 6 }}
       - name: wait-for-dremio-master
