@@ -95,6 +95,8 @@ spec:
           name: server-fabric
         - containerPort: 45679
           name: server-conduit
+        - containerPort: 9010
+          name: prometheus
         startupProbe:
           httpGet:
             path: /
