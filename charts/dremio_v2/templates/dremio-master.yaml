@@ -38,18 +38,6 @@ spec:
       {{- include "dremio.coordinator.nodeSelector" $ | nindent 6 }}
       {{- include "dremio.coordinator.tolerations" $ | nindent 6 }}
       containers:
-      - name: testsidecar
-        image: dremiops.azurecr.io/dremio-k8s-tools:v1.21
-        imagePullPolicy: Always
-        command:
-          - sleep
-          - infinity
-        volumeMounts:
-        - name: dremio-master-volume
-          mountPath: /opt/dremio/data
-        ports:
-          - containerPort: 8080
-            name: webtest
       - name: dremio-master-coordinator
         image: {{ $.Values.image }}:{{ $.Values.imageTag }}
         imagePullPolicy: IfNotPresent
