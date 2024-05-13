@@ -60,7 +60,11 @@ spec:
           value: >-
             -Dzookeeper=zk-hs:2181
             -Dservices.coordinator.master.embedded-zookeeper.enabled=false
+            {{- if .Values.singleNode }}
+            -Dservices.executor.enabled=true
+            {{- else }}
             -Dservices.executor.enabled=false
+            {{- end }}
             {{- if .Values.extraStartParams }}
             {{ .Values.extraStartParams }}
             {{- end }}
