@@ -70,12 +70,12 @@ spec:
           value: "{{ template "dremio.coordinator.directMemory" $ }}"
         - name: DREMIO_JAVA_SERVER_EXTRA_OPTS
           value: >-
+            -Dservices.executor.enabled=false
             {{- include "dremio.coordinator.extraStartParams" $ | nindent 12 -}}
             -Dzookeeper=zk-hs:2181
             -Dservices.coordinator.enabled=true
             -Dservices.coordinator.master.enabled=true
             -Dservices.coordinator.master.embedded-zookeeper.enabled=false
-            -Dservices.executor.enabled=false
             -Dservices.conduit.port=45679
         - name: AWS_CREDENTIAL_PROFILES_FILE
           value: "/opt/dremio/aws/credentials"
