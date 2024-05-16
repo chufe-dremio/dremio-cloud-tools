@@ -82,8 +82,6 @@ coordinator:
     -Dservices.web-admin.enabled=true
     -Dservices.web-admin.host=0.0.0.0
     -XX:+UseG1GC -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=25
-    -Djavax.net.ssl.trustStore=/opt/dremio/ldap-truststore/ldap-test-truststore-wrong.jks
-    -Djavax.net.ssl.trustStorePassword=changeit
 #    -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
 #    -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
 #    -Dservices.executor.enabled=true
@@ -565,13 +563,13 @@ distStorage:
 #- name: dremio-thirdparty
 #  mountPath: /opt/dremio/thirdparty
 
-extraVolumes:
-- name: ldap-truststore-volume
-  secret:
-    secretName: ldap-truststore
-extraVolumeMounts:
-- name: ldap-truststore-volume
-  mountPath: "/opt/dremio/ldap-truststore"
+#extraVolumes:
+#- name: ldap-truststore-volume
+#  secret:
+#    secretName: ldap-truststore
+#extraVolumeMounts:
+#- name: ldap-truststore-volume
+#  mountPath: "/opt/dremio/ldap-truststore"
 
 # Dremio Service
 # The dremio-client service exposes the service for access outside of the Kubernetes cluster.
