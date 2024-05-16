@@ -82,8 +82,8 @@ coordinator:
     -Dservices.web-admin.enabled=true
     -Dservices.web-admin.host=0.0.0.0
     -XX:+UseG1GC -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=25
-    -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
-    -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
+#    -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
+#    -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
 #    -Dservices.executor.enabled=true
 #    -Dservices.coordinator.web.auth.type=azuread
 #    -Dservices.coordinator.web.auth.config=azuread.json
@@ -532,20 +532,20 @@ distStorage:
 #  - name: extra-init-container
 #    image: {{ $.Values.image }}:{{ $.Values.imageTag }}
 #    command: ["echo", "Hello World"]
-extraInitContainers: |
-  - name: init-thirdparty
-    image: {{ $.Values.image }}:{{ $.Values.imageTag }}
-    imagePullPolicy: IfNotPresent
-    securityContext:
-      runAsUser: 0
-    volumeMounts:
-    - name: dremio-thirdparty
-      mountPath: /opt/dremio/thirdparty
-    command: ["/bin/sh", "-c"]
-    args:
-      - |
-        wget -q "https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.4.1/applicationinsights-agent-3.4.1.jar" -O /opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar;
-        chmod 755 /opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar;
+#extraInitContainers: |
+#  - name: init-thirdparty
+#    image: {{ $.Values.image }}:{{ $.Values.imageTag }}
+#    imagePullPolicy: IfNotPresent
+#    securityContext:
+#      runAsUser: 0
+#    volumeMounts:
+#    - name: dremio-thirdparty
+#      mountPath: /opt/dremio/thirdparty
+#    command: ["/bin/sh", "-c"]
+#    args:
+#      - |
+#        wget -q "https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.4.1/applicationinsights-agent-3.4.1.jar" -O /opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar;
+#        chmod 755 /opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar;
 
 # Kubernetes Service Account
 # Uncomment the below line to provide a Kubernetes service account that Dremio should run with.
@@ -553,15 +553,23 @@ extraInitContainers: |
 
 # Extra Volumes
 # Array to add extra volumes to all Dremio resources.
-extraVolumes:
-- name: dremio-thirdparty
-  emptyDir: {}
+#extraVolumes:
+#- name: dremio-thirdparty
+#  emptyDir: {}
+#
+## Extra Volume Mounts
+## Array to add extra volume mounts to all Dremio resources, normally used in conjunction wtih extraVolumes.
+#extraVolumeMounts:
+#- name: dremio-thirdparty
+#  mountPath: /opt/dremio/thirdparty
 
-# Extra Volume Mounts
-# Array to add extra volume mounts to all Dremio resources, normally used in conjunction wtih extraVolumes.
+extraVolumes:
+- name: ldap-truststore-volume
+  secret:
+    secretName: ldap-truststore
 extraVolumeMounts:
-- name: dremio-thirdparty
-  mountPath: /opt/dremio/thirdparty
+- name: ldap-truststore-volume
+  mountPath: "/opt/dremio/ldap-truststore"
 
 # Dremio Service
 # The dremio-client service exposes the service for access outside of the Kubernetes cluster.

@@ -72,13 +72,6 @@ coordinator:
   # Extra Volume Mounts
   # Uncomment below to use a custom set of extra volume mounts for the coordinator.
   #extraVolumeMounts: []
-  extraVolumes:
-  - name: ldap-truststore-volume
-    secret:
-      secretName: ldap-truststore
-  extraVolumeMounts:
-  - name: ldap-truststore-volume
-    mountPath: "/opt/dremio/ldap-truststore"
   # Uncomment this value to use a different storage class for the coordinator.
   #storageClass:
 
