@@ -78,7 +78,7 @@ coordinator:
       name: ldap-truststore
   extraVolumeMounts:
   - name: ldap-truststore-volume
-    mountPath: "/opt/dremio/ldap-truststore.jks"
+    mountPath: "/opt/dremio/ldap-truststore"
   # Uncomment this value to use a different storage class for the coordinator.
   #storageClass:
 
