@@ -75,7 +75,7 @@ coordinator:
   extraVolumes:
   - name: ldap-truststore-volume
     secret:
-      name: ldap-truststore
+      secretName: ldap-truststore
   extraVolumeMounts:
   - name: ldap-truststore-volume
     mountPath: "/opt/dremio/ldap-truststore"
