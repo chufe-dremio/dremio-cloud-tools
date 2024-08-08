@@ -41,8 +41,8 @@ powerToolsImage: dremiopsprivate.azurecr.io/dremio-power-tools
 powerToolsImageTag: v25.0.7-latest
 powertools:
   cpu: 1
-  memory: 6144
-  javaopts: -Xms4G -Xmx4G
+  memory: 4096
+  javaopts: -Xms3G -Xmx3G
   web:
     port: 8080
 
@@ -68,8 +68,8 @@ coordinator:
   # CPU & Memory
   # Memory allocated to each coordinator, expressed in MB.
   # CPU allocated to each coordinator, expressed in CPU cores.
-  cpu: 3
-  memory: 12000
+  cpu: 2
+  memory: 10000
   singleNode: true
   # This count is used for slave coordinators only.
   # The total number of coordinators will always be count + 1.
