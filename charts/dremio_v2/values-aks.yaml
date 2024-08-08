@@ -69,7 +69,7 @@ coordinator:
   # Memory allocated to each coordinator, expressed in MB.
   # CPU allocated to each coordinator, expressed in CPU cores.
   cpu: 2
-  memory: 10000
+  memory: 8192
   singleNode: true
   # This count is used for slave coordinators only.
   # The total number of coordinators will always be count + 1.
