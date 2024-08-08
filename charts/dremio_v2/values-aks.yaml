@@ -37,6 +37,15 @@ hive:
     clientSecret: SET_VIA_CICD
     clientEndpoint: SET_VIA_CICD
 
+powerToolsImage: dremiopsprivate.azurecr.io/dremio-power-tools
+powerToolsImageTag: v25.0.7-latest
+powertools:
+  cpu: 1
+  memory: 6144
+  javaopts: -Xms4G -Xmx4G
+  web:
+    port: 8080
+
 # Annotations, labels, node selectors, and tolerations
 #
 # annotations: Annotations are applied to the StatefulSets that are deployed.
