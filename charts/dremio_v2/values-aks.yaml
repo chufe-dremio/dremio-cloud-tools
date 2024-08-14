@@ -41,8 +41,8 @@ powerToolsImage: dremiopsprivate.azurecr.io/dremio-power-tools
 powerToolsImageTag: v25.0.7-latest
 powertools:
   cpu: 1
-  memory: 2048
-  javaopts: -Xms1536M -Xmx1536M
+  memory: 3072
+  javaopts: -Xms2048M -Xmx2048M
   web:
     port: 8080
 
