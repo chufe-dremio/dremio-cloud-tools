@@ -42,7 +42,7 @@ powerToolsImageTag: v25.0.7-latest
 powertools:
   cpu: 1
   memory: 2048
-  javaopts: -Xms1024M -Xmx1024M
+  javaopts: -Xms1536M -Xmx1536M
   web:
     port: 8080
 
