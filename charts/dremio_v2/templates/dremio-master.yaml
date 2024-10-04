@@ -81,10 +81,9 @@ spec:
           value: "/opt/dremio/aws/credentials"
         - name: AWS_SHARED_CREDENTIALS_FILE
           value: "/opt/dremio/aws/credentials"
-        command: ["/bin/sh","-c"]
+        command: [ "/opt/dremio/bin/dremio" ]
         args:
-          - keytool -import -trustcacerts -no-prompt -storepass changeit -alias customcert -keystore /opt/java/openjdk/lib/security/cacerts -file /opt/dremio/custom-truststore/myca.pem;
-          - /opt/dremio/bin/dremio start-fg";
+          - "start-fg"
         ports:
         - containerPort: 9047
           name: web
