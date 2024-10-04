@@ -106,7 +106,7 @@ coordinator:
   - name: dremio-custom-truststore-volume
     mountPath: "/opt/dremio/custom-truststore"
 
-  extraInitContainers: |
+  extraInitContainers:
     - name: extra-init-truststore-container
       image: {{ $.Values.image }}:{{ $.Values.imageTag }}
       command: touch /opt/dremio/custom-truststore/helloworld
