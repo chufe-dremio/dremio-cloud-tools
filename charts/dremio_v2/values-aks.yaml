@@ -91,6 +91,9 @@ coordinator:
     -Dservices.web-admin.enabled=true
     -Dservices.web-admin.host=0.0.0.0
     -XX:+UseG1GC -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=25
+    -Djavax.net.ssl.trustStore=/opt/dremio/custom-truststore/dremio-truststore.jks
+    -Djavax.net.ssl.trustStorePassword=changeit
+
 
   extraVolumes:
   - name: dremio-host-truststore-volume
@@ -111,7 +114,8 @@ coordinator:
       image: {{ $.Values.image }}:{{ $.Values.imageTag }}
       command: ["/bin/sh", "-c"]
       args:
-      - /usr/bin/sleep 300;
+      - cp /opt/java/openjdk/lib/security/cacerts  /opt/dremio/custom-truststore/dremio-truststore.jks;
+        keytool -import -trustcacerts -no-prompt -storepass changeit -alias customcert -keystore /opt/dremio/custom-truststore/dremio-truststore.jks -file /opt/dremio/host-truststore/myca.pem;
       securityContext:
         runAsUser: 0
       volumeMounts:
