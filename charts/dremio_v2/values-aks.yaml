@@ -92,6 +92,14 @@ coordinator:
     -Dservices.web-admin.host=0.0.0.0
     -XX:+UseG1GC -XX:G1HeapRegionSize=32M -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=25
 
+  extraVolumes:
+  - name: dremio-custom-truststore-volume
+    hostPath:
+          path: /etc/pki/ca-trust/source/anchors
+          type: Directory
+  extraVolumeMounts:
+  - name: dremio-custom-truststore-volume
+    mountPath: "/opt/dremio/custom-truststore"
 #    -Dapplicationinsights.configuration.file=/opt/dremio/conf/applicationinsights.json
 #    -javaagent:/opt/dremio/thirdparty/applicationinsights-agent-3.4.1.jar
 #    -Dservices.executor.enabled=true
@@ -574,14 +582,14 @@ distStorage:
 #- name: dremio-thirdparty
 #  mountPath: /opt/dremio/thirdparty
 
-extraVolumes:
-- name: dremio-custom-truststore-volume
-  hostPath:
-        path: /etc/pki/ca-trust/source/anchors
-        type: Directory
-extraVolumeMounts:
-- name: dremio-custom-truststore-volume
-  mountPath: "/opt/dremio/custom-truststore"
+#extraVolumes:
+#- name: dremio-custom-truststore-volume
+#  hostPath:
+#        path: /etc/pki/ca-trust/source/anchors
+#        type: Directory
+#extraVolumeMounts:
+#- name: dremio-custom-truststore-volume
+#  mountPath: "/opt/dremio/custom-truststore"
 
 # Dremio Service
 # The dremio-client service exposes the service for access outside of the Kubernetes cluster.
