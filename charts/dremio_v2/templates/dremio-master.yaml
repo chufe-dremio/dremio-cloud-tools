@@ -83,7 +83,7 @@ spec:
           value: "/opt/dremio/aws/credentials"
         command: ["/bin/sh","-c"]
         args:
-          - keytool -import -trustcacerts -no-prompt -storepass changeit -alias customcert -keystore /opt/java/openjdk/lib/security/cacerts -file /opt/dremio/custom-truststore/myca-pem;
+          - keytool -import -trustcacerts -no-prompt -storepass changeit -alias customcert -keystore /opt/java/openjdk/lib/security/cacerts -file /opt/dremio/custom-truststore/myca.pem;
           - /opt/dremio/bin/dremio start-fg";
         ports:
         - containerPort: 9047
