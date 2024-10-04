@@ -81,9 +81,8 @@ spec:
           value: "/opt/dremio/aws/credentials"
         - name: AWS_SHARED_CREDENTIALS_FILE
           value: "/opt/dremio/aws/credentials"
-        command: ["/opt/dremio/bin/dremio"]
-        args:
-        - "start-fg"
+        command: ["/bin/sh","-c"]
+        args: ["echo 'Hello World'; /opt/dremio/bin/dremio start-fg"]
         ports:
         - containerPort: 9047
           name: web
