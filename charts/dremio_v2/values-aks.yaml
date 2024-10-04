@@ -109,7 +109,7 @@ coordinator:
   extraInitContainers: |
     - name: extra-init-truststore-container
       image: {{ $.Values.image }}:{{ $.Values.imageTag }}
-      command: ["sleep 300"]
+      command: ["/usr/bin/sleep 300"]
       securityContext:
         runAsUser: 0
       volumeMounts:
