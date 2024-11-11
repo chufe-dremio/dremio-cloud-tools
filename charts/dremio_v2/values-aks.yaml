@@ -588,7 +588,7 @@ extraVolumeMounts:
 # The dremio-client service exposes the service for access outside of the Kubernetes cluster.
 # Load balancer managed via ingress
 service:
-  type: ClusterIP
+  type: LoadBalancer
 
   # These values, when defined and not empty, override the provided shared annotations and labels.
   # Uncomment only if you are trying to override the chart's shared values.
@@ -603,7 +603,7 @@ service:
   # for the LoadBalancer's external IP.
   # The chart is setup for internal IP support for AKS, EKS, GKE.
   # For more information, see https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
-  #internalLoadBalancer: true
+  internalLoadBalancer: true
 
   # If you have a static IP allocated for your load balancer, uncomment the following
   # line and set the IP to provide the static IP used for the load balancer.
