@@ -38,7 +38,7 @@ hive:
     clientEndpoint: SET_VIA_CICD
 
 powerToolsImage: dremiopsprivate.azurecr.io/dremio-power-tools
-powerToolsImageTag: v25.0.7-latest
+powerToolsImageTag: v25.2.0-latest
 powertools:
   cpu: 1
   memory: 3072
