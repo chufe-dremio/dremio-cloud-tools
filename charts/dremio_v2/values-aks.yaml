@@ -37,7 +37,7 @@ hive:
     clientSecret: SET_VIA_CICD
     clientEndpoint: SET_VIA_CICD
 
-powerToolsImage: quay.io/dremio-power-tools
+powerToolsImage: quay.io/dremio/dremio-power-tools
 powerToolsImageTag: v25.2.0-latest
 powertools:
   cpu: 1
