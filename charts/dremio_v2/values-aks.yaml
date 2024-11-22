@@ -624,3 +624,4 @@ service:
 imagePullSecrets:
   - carsten-docker-secret
   - carsten-aks-gcr
+  - chufe-dremio-pull-secret
