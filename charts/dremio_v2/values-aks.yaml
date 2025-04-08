@@ -40,7 +40,7 @@ hive:
 powerToolsImage: quay.io/dremio/dremio-power-tools
 powerToolsImageTag: v25.2.2-latest
 powertools:
-  cpu: 1
+  cpu: 0.5
   memory: 3072
   javaopts: -Xms2048M -Xmx2048M
   web:
