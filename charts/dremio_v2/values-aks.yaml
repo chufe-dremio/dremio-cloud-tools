@@ -61,7 +61,11 @@ podAnnotations: {}
 labels: {}
 podLabels: {}
 nodeSelector: {}
-tolerations: []
+tolerations:
+  - key: "app"
+    operator: "Equal"
+    value: "dremio"
+    effect: "NoExecute"
 
 # Dremio Coordinator
 coordinator:
